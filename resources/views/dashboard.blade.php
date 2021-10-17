@@ -8,6 +8,6 @@
     </head>
     <body>
         @include('partials.nav')
-        <h1>Home</h1>
+        <h1>Dashboard</h1>
     </body>
 </html>
