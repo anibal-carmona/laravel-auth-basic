@@ -9,5 +9,16 @@
     <body>
         @include('partials.nav')
         <h1>Login</h1>
+        <pre>{{ Auth::user() }}</pre>
+        <form action="" method="POST">
+            @csrf
+            <label for="email">
+                <input name="email" type="email" placeholder="Email...">
+            </label><br>
+            <label for="password">
+                <input name="password" type="password" placeholder="Password...">
+            </label><br>
+            <button type="submit">Login</button>
+        </form>
     </body>
 </html>

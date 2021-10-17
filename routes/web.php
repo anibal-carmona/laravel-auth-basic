@@ -18,5 +18,18 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::view('/', 'welcome');
-Route::view('login', 'login');
-Route::view('dashboard', 'dashboard');
+Route::view('login', 'login')->name('login')->middleware('guest');
+Route::view('dashboard', 'dashboard')->middleware('auth');
+
+Route::post('login', function () {
+
+    $credenciales = request()->only('email','password');
+
+    if (Auth::attempt($credenciales)) {
+        request()->session()->regenerate();
+
+        return redirect('dashboard');
+    }
+
+    return redirect('login');
+});
